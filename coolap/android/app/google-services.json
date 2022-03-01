@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "159700434105",
+    "project_id": "guide-me-22a2d",
+    "storage_bucket": "guide-me-22a2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159700434105:android:e7607470a924ef27336f68",
+        "android_client_info": {
+          "package_name": "com.guideME.coolap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159700434105-a0v6d70kn3uc2ldr3agkrfcj7mdjv0mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfMmMkF-9xD86cZYeXgfxZMDCFhXvcndw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159700434105-a0v6d70kn3uc2ldr3agkrfcj7mdjv0mh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
