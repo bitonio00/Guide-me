@@ -1,3 +1,5 @@
+import 'package:coolap/etreguider.dart';
+import 'package:coolap/guider.dart';
 import 'package:coolap/pages/inscription.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +56,10 @@ class FirstPage extends StatelessWidget {
                     Navigator.of(context).push(
                       // With MaterialPageRoute, you can pass data between pages,
                       // but if you have a more complex app, you will quickly get lost.
-                      MaterialPageRoute(builder: (context) => InscriptionPage()
+                      MaterialPageRoute(
+                          builder: (context) => Guider(
+                                data: '',
+                              )
                           /* SecondPage(
                             data: 'Hello there from the first page!'),*/
                           ),
@@ -75,7 +80,10 @@ class FirstPage extends StatelessWidget {
                     Navigator.of(context).push(
                       // With MaterialPageRoute, you can pass data between pages,
                       // but if you have a more complex app, you will quickly get lost.
-                      MaterialPageRoute(builder: (context) => InscriptionPage()
+                      MaterialPageRoute(
+                          builder: (context) => EtreGuider(
+                                data: '',
+                              )
                           /*SecondPage(
                             data: 'Hello there from the first page!'),*/
                           ),
