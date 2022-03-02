@@ -2,19 +2,68 @@ import 'package:coolap/etreguider.dart';
 import 'package:coolap/guider.dart';
 import 'package:coolap/pages/inscription.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:coolap/pages/authenticate/firebase_auth.dart';
+import 'package:coolap/pages/authenticate/authenticate.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, _) => MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // Initially display FirstPage
+        home: FirstPage()
+        //,HomePage()
+        );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Firebase Meetup'),
       ),
-      // Initially display FirstPage
-      home: FirstPage(),
+      body: ListView(
+        children: <Widget>[
+          Image.asset('assets/codelab.png'),
+          const SizedBox(height: 8),
+          Consumer<ApplicationState>(
+            builder: (context, appState, _) => Authentication(
+              email: appState.email,
+              loginState: appState.loginState,
+              startLoginFlow: appState.startLoginFlow,
+              verifyEmail: appState.verifyEmail,
+              signInWithEmailAndPassword: appState.signInWithEmailAndPassword,
+              cancelRegistration: appState.cancelRegistration,
+              registerAccount: appState.registerAccount,
+              signOut: appState.signOut,
+            ),
+          ),
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+        ],
+      ),
     );
   }
 }
