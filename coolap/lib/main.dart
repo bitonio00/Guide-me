@@ -35,7 +35,7 @@ class FirstPage extends StatelessWidget {
               bottom: 120,
               left: 10,
               child: Text(
-                "Avant de commencer, nous devons savoir qui\n se cache derrière l'ecran \n Etes vous là pour guider ou pour être guider",
+                "Avant de commencer, nous devons savoir qui\n se cache derrière l'ecran. \n Etes-vous là pour guider ou pour être guidé ?",
                 textAlign: TextAlign.center,
                 textScaleFactor: 1.25,
                 style:
@@ -45,7 +45,7 @@ class FirstPage extends StatelessWidget {
               bottom: 10,
               left: 127.5,
               child: ElevatedButton(
-                  child: Text('Je suis là pour guider'),
+                  child: Text('Je suis là pour guider.'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red[200],
                     onPrimary: Colors.white,
@@ -69,7 +69,7 @@ class FirstPage extends StatelessWidget {
               bottom: 60,
               left: 115,
               child: ElevatedButton(
-                  child: Text('Je suis là pour être guidé'),
+                  child: Text('Je suis là pour être guidé.'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red[200],
                     onPrimary: Colors.white,
