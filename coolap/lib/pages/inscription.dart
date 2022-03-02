@@ -1,3 +1,4 @@
+import 'package:coolap/pages/menu.dart';
 import 'package:flutter/material.dart';
 
 class InscriptionPage extends StatefulWidget {
@@ -184,6 +185,12 @@ class Form2State extends State<Form2> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
               onPressed: () {
+                // Pushing a route directly, WITHOUT using a named route
+                Navigator.of(context).push(
+                  // With MaterialPageRoute, you can pass data between pages,
+                  // but if you have a more complex app, you will quickly get lost.
+                  MaterialPageRoute(builder: (context) => Dashboard()),
+                );
                 // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState!.validate()) {
                   // If the form is valid, display a snackbar. In the real world,

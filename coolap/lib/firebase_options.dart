@@ -61,7 +61,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '359661763058',
     projectId: 'guide-me-20196',
     storageBucket: 'guide-me-20196.appspot.com',
-    iosClientId: '359661763058-j6k23c4ul1n5hd55ei78b5rmab4psv11.apps.googleusercontent.com',
+    iosClientId:
+        '359661763058-j6k23c4ul1n5hd55ei78b5rmab4psv11.apps.googleusercontent.com',
     iosBundleId: 'com.Guide-me.app',
   );
 }
