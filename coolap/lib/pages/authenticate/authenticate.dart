@@ -1,4 +1,7 @@
+import 'package:coolap/pages/inscription.dart';
 import 'package:flutter/material.dart';
+
+import '../menu.dart';
 
 enum ApplicationLoginState {
   loggedOut,
@@ -65,6 +68,9 @@ class Authentication extends StatelessWidget {
     String email,
     String displayName,
     String password,
+    String birthDate,
+    String level,
+    String guide,
     void Function(Exception e) error,
   ) registerAccount;
   final void Function() signOut;
@@ -81,7 +87,7 @@ class Authentication extends StatelessWidget {
                 onPressed: () {
                   startLoginFlow();
                 },
-                child: const Text('RSVP'),
+                child: const Text('Connect'),
               ),
             ),
           ],
@@ -104,15 +110,15 @@ class Authentication extends StatelessWidget {
           cancel: () {
             cancelRegistration();
           },
-          registerAccount: (
-            email,
-            displayName,
-            password,
-          ) {
+          registerAccount:
+              (email, displayName, password, birthDate, level, guide) {
             registerAccount(
                 email,
                 displayName,
                 password,
+                birthDate,
+                level,
+                guide,
                 (e) =>
                     _showErrorDialog(context, 'Failed to create account', e));
           },
@@ -247,8 +253,8 @@ class RegisterForm extends StatefulWidget {
     required this.email,
   });
   final String email;
-  final void Function(String email, String displayName, String password)
-      registerAccount;
+  final void Function(String email, String displayName, String password,
+      String birthDate, String level, String guide) registerAccount;
   final void Function() cancel;
   @override
   _RegisterFormState createState() => _RegisterFormState();
@@ -259,6 +265,9 @@ class _RegisterFormState extends State<RegisterForm> {
   final _emailController = TextEditingController();
   final _displayNameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _birthDateController = TextEditingController();
+  final _levelController = TextEditingController();
+  final _guideController = TextEditingController();
 
   @override
   void initState() {
@@ -325,6 +334,51 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                 ),
                 Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: TextFormField(
+                    controller: _birthDateController,
+                    decoration: const InputDecoration(
+                      hintText: 'Date of Birth JJ/MM/AAAA',
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter your Date of Birth ';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: TextFormField(
+                    controller: _levelController,
+                    decoration: const InputDecoration(
+                      hintText: 'your level',
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter your level ';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: TextFormField(
+                    controller: _guideController,
+                    decoration: const InputDecoration(
+                      hintText: 'Guide ou Guidé',
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Guide ou Guidé';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -341,6 +395,15 @@ class _RegisterFormState extends State<RegisterForm> {
                               _emailController.text,
                               _displayNameController.text,
                               _passwordController.text,
+                              _birthDateController.text,
+                              _levelController.text,
+                              _guideController.text,
+                            );
+                            Navigator.of(context).push(
+                              // With MaterialPageRoute, you can pass data between pages,
+                              // but if you have a more complex app, you will quickly get lost.
+                              MaterialPageRoute(
+                                  builder: (context) => Dashboard()),
                             );
                           }
                         },
