@@ -45,7 +45,10 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          Image.asset('assets/codelab.png'),
+          Image(
+            image: NetworkImage(
+                'https://images.unsplash.com/photo-1500468756762-a401b6f17b46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'),
+          ),
           const SizedBox(height: 8),
           Consumer<ApplicationState>(
             builder: (context, appState, _) => Authentication(

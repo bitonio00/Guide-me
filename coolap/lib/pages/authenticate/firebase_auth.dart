@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart'; // new
 import 'package:flutter/material.dart';
 import '../../firebase_options.dart';
 import 'authenticate.dart';
+import 'user.dart';
 
 import 'package:provider/provider.dart';
 
@@ -80,13 +81,19 @@ class ApplicationState extends ChangeNotifier {
       String email,
       String displayName,
       String password,
+      String birthDate,
+      String level,
+      String guide,
       void Function(FirebaseAuthException e) errorCallback) async {
     try {
       var credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+
       await credential.user!.updateDisplayName(displayName);
+      userSetup(displayName, birthDate, level, guide);
     } on FirebaseAuthException catch (e) {
       errorCallback(e);
+      print(e);
     }
   }
 
