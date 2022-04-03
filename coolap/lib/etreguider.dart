@@ -15,25 +15,26 @@ class EtreGuider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Routing App'),
+        title: const Text('Malvoyant'),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(
-              'Être guidé, c’est quoi ? ',
-              style: TextStyle(fontSize: 50),
+            const Text(
+              'Être guidé, c’est quoi ?\n\n\n',
+              style: TextStyle(fontSize: 30),
             ),
             Text(
-              'Etre guidé, c’est etre accompagné afin de pouvoir faire du sport en toute tranquilité. ',
+              "Être guidé, c’est être accompagné par un bénévole afin de pratiquer son sport en sécurité.\nC'est aussi l'occaion de nouer des liens solides.",
               style: TextStyle(fontSize: 20),
             ),
             Positioned(
                 bottom: 10,
                 left: 127.5,
                 child: ElevatedButton(
-                    child: Text("s'inscrire"),
+                    child: Text("S'inscrire"),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.red[200],
                       onPrimary: Colors.white,

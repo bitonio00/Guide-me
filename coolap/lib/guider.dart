@@ -15,25 +15,26 @@ class Guider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Routing App'),
+        title: const Text('Guide'),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(
-              'Guider, c’est quoi ? ',
-              style: TextStyle(fontSize: 50),
+            const Text(
+              'Être guide, c’est quoi ?\n\n\n',
+              style: TextStyle(fontSize: 30),
             ),
-            Text(
-              "Guider c'est s'éxercer tout en permettant aux autres de s'éxercer  ",
+            const Text(
+              "C'est partager sa séance de sport avec une personne défficiente visuelle.\nVous lui permettez ainsi de pratiquer dans de bonnes conditions, et chacun passe un bon moment.",
               style: TextStyle(fontSize: 20),
             ),
             Positioned(
                 bottom: 10,
                 left: 127.5,
                 child: ElevatedButton(
-                    child: Text("s'inscrire"),
+                    child: Text("S'inscrire"),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.red[200],
                       onPrimary: Colors.white,

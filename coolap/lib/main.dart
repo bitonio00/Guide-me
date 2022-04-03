@@ -1,12 +1,15 @@
-import 'package:coolap/etreguider.dart';
-import 'package:coolap/guider.dart';
-import 'package:coolap/pages/inscription.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:coolap/pages/authenticate/firebase_auth.dart';
 import 'package:coolap/pages/authenticate/authenticate.dart';
 
+import 'etreguider.dart';
+import 'guider.dart';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     ChangeNotifierProvider(
       create: (context) => ApplicationState(),
@@ -19,14 +22,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        // Initially display FirstPage
-        home: FirstPage()
-        //,HomePage()
-        );
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      // Initially display FirstPage
+      home: FirstPage(),
+      debugShowCheckedModeBanner: false,
+      //,HomePage()
+    );
   }
 }
 
@@ -73,28 +77,31 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Routing App'),
+          title: const Center(child: Text('Guide-Me')),
         ),
         body: Stack(children: <Widget>[
-          Image(
-            image: NetworkImage(
-                'https://images.unsplash.com/photo-1500468756762-a401b6f17b46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'),
+          const Positioned.fill(
+            child: Image(
+              image: NetworkImage(
+                  "https://images.unsplash.com/photo-1500468756762-a401b6f17b46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"),
+              fit: BoxFit.fill,
+            ),
           ),
-          Positioned(
-              bottom: 120,
+          const Positioned(
+              bottom: 110,
               left: 10,
               child: Text(
-                "Avant de commencer, nous devons savoir qui\n se cache derrière l'ecran. \n Etes-vous là pour guider ou pour être guidé ?",
+                "Avant de commencer, nous devons savoir\nqui se cache derrière l'ecran.\n Etes-vous là pour guider ou pour être guidé ?",
                 textAlign: TextAlign.center,
-                textScaleFactor: 1.25,
+                textScaleFactor: 1.35,
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
               )),
           Positioned(
               bottom: 10,
               left: 127.5,
               child: ElevatedButton(
-                  child: Text('Je suis là pour guider.'),
+                  child: const Text('Je suis là pour guider'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red[200],
                     onPrimary: Colors.white,
@@ -118,7 +125,7 @@ class FirstPage extends StatelessWidget {
               bottom: 60,
               left: 115,
               child: ElevatedButton(
-                  child: Text('Je suis là pour être guidé.'),
+                  child: const Text('Je suis là pour être guidé'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red[200],
                     onPrimary: Colors.white,
@@ -139,40 +146,5 @@ class FirstPage extends StatelessWidget {
                     );
                   })),
         ]));
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  // This is a String for the sake of an example.
-  // You can use any type you want.
-  final String data;
-
-  SecondPage({
-    Key? key,
-    required this.data,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Routing App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              'Second Page',
-              style: TextStyle(fontSize: 50),
-            ),
-            Text(
-              data,
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
